@@ -1,0 +1,28 @@
+---
+# tasks file for private-repos
+- debug: msg="Starting tasks from private-repos..."
+
+- name: Set up RPM repos...
+  template:
+    src: templates/rpm.repo.j2
+    dest: "/etc/yum.repos.d/{{item}}.repo"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - "{{private_repo_rpm_repos}}"
+  become: True
+
+- name: Set up PyPI repos...
+  template:
+    src: templates/pip.conf.j2
+    dest: "/etc/pip.conf"
+    owner: root
+    group: root
+    mode: 0644
+  become: True
+
+- name: Log in to Docker repos...
+  command: "docker login -p '{{private_repo_password}}' -u '{{private_repo_username}}' {{item}}.{{private_repo_url_base}}"
+  with_items:
+    - "{{private_repo_docker_repos}}"

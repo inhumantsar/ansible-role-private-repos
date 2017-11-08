@@ -1,0 +1,33 @@
+galaxy_info:
+  author: Shaun Martin
+  description: Deploys configs for private pip, Docker, etc. repos.
+
+  license: BSD
+
+  min_ansible_version: 2.1
+
+  platforms:
+    - name: EL
+      versions:
+        - 6
+        - 7
+    - name: Fedora
+      versions:
+        - all
+    - name: Ubuntu
+      versions:
+        - all
+
+  galaxy_tags:
+    - deployment
+    - packaging
+    - cd
+    - continuousdelivery
+    - pip
+    - pypi
+    - rpm
+    - artifactory
+    - docker
+    - repositories
+    - repos
+    - authentication

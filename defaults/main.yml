@@ -1,0 +1,5 @@
+---
+private_repo_url_proto: 'https'
+private_repo_name_prefix: 'Artifactory - ' # friendly descriptions only
+
+private_repo_username: 'jtest'

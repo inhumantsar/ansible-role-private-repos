@@ -1,0 +1,14 @@
+- hosts: localhost
+  connection: local
+  handlers:
+    - include: 'handlers/main.yml'
+  vars_files:
+    - 'defaults/main.yml'
+    - 'vars/main.yml'
+    - 'vars/test.yml'
+  tasks:
+    - name: set up yum.repos.d for travis...
+      file:
+        state: directory
+        path: /etc/yum.repos.d
+    - include_tasks: 'tasks/main.yml'

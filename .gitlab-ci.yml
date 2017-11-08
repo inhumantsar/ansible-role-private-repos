@@ -1,0 +1,7 @@
+image: inhumantsar/ansible:centos
+
+test:
+  vars:
+    WORKDIR: /workspace
+  script:
+    /start.sh -vvv
