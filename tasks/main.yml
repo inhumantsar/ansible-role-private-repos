@@ -5,7 +5,7 @@
 - name: Set up RPM repos...
   template:
     src: templates/rpm.repo.j2
-    dest: "/etc/yum.repos.d/{{item}}.repo"
+    dest: "/etc/yum.repos.d/{{private_repo_name_prefix}}{{item}}.repo"
     owner: root
     group: root
     mode: 0644
