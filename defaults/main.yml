@@ -1,5 +1,4 @@
 ---
 private_repo_url_proto: 'https'
-private_repo_name_prefix: 'Artifactory - ' # friendly descriptions only
-
-private_repo_username: 'jtest'
+private_repo_desc_prefix: 'Artifactory - '  # friendly descriptions only
+private_repo_name_prefix: 'af-'             # prefix for repo machine names
