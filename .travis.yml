@@ -25,6 +25,9 @@ install:
   # Create ansible.cfg with correct roles_path
   - printf '[defaults]\nroles_path=../' > ansible.cfg
 
+  # create repos dir
+  mkdir -p /etc/yum.repos.d
+
 script:
   - ansible-playbook test.yml --syntax-check
   - ansible-playbook test.yml -v
