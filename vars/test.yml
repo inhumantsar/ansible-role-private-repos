@@ -16,7 +16,10 @@ private_repo_rpm_repos:
 private_repo_pypi_repos:
   - pypi
 
-private_repo_apt_repos: []
+private_repo_apt_repos:
+  - name: ubuntu
+    component: main
+    codename: xenial
 
 # can't really test this against a fake repo without installing things
 private_repo_docker_repos: []
