@@ -7,14 +7,5 @@
     - 'vars/main.yml'
     - 'vars/test.yml'
   tasks:
-    - name: set up yum.repos.d for travis...
-      file:
-        state: directory
-        path: /etc/yum.repos.d
-      become: True
-
-    - name: set up apt module for travis...
-      apt: name=python-apt
-
     - name: Test CentOS 7, PyPI, and Docker
       include_tasks: 'tasks/main.yml'
