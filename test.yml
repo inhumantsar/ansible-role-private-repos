@@ -11,5 +11,7 @@
       file:
         state: directory
         path: /etc/yum.repos.d
+      become: True
+      
     - name: Test CentOS 7, PyPI, and Docker
       include_tasks: 'tasks/main.yml'
