@@ -7,16 +7,12 @@ private_repo_url_proto: 'https'
 private_repo_url_base: 'artifactory.default.com'
 private_repo_url_pathprefix: 'artifactory'
 
-private_repo_desc_prefix: 'Artifactory' # friendly descriptions only
-private_repo_name_prefix: "af"
+private_repo_name_prefix: 'Artifactory - ' # friendly descriptions only
 
-private_repo_rpm_repos:
-  - centos
-
-private_repo_pypi_repos:
-  - pypi
-
-private_repo_apt_repos: []
-
-# can't really test this against a fake repo without installing things
+private_repo_rpm_repos: []
+private_repo_pypi_repos: []
 private_repo_docker_repos: []
+private_repo_apt_repos:
+  - name: ubuntu
+    component: main
+    codename: xenial

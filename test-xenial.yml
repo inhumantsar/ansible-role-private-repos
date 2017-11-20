@@ -5,11 +5,7 @@
   vars_files:
     - 'defaults/main.yml'
     - 'vars/main.yml'
-    - 'vars/test.yml'
+    - 'vars/test-xenial.yml'
   tasks:
-    - name: set up yum.repos.d for travis...
-      file:
-        state: directory
-        path: /etc/yum.repos.d
-    - name: Test CentOS 7, PyPI, and Docker
+    - name: Test Xenial
       include_tasks: 'tasks/main.yml'
