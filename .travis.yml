@@ -10,26 +10,9 @@ branches:
     - master
     - dev
 
-addons:
-  apt:
-    packages:
-      - python-pip
-      - python-apt
-
-install:
-  - pip install ansible
-
-  # version checks
-  - ansible --version
-
-  # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' > ansible.cfg
-
-  # create repos dir
-  - sudo mkdir -p /etc/yum.repos.d
 script:
-  - ansible-playbook test.yml --syntax-check
-  - ansible-playbook test.yml -v
+  - docker run --rm -w /workspace -v $(pwd):/workspace inhumantsar/ansible:centos7 /start.sh -v -e 'private_repo_apt_repos=[]'
+  - docker run --rm -w /workspace -v $(pwd):/workspace inhumantsar/ansible:xenial /start.sh -v -e 'private_repo_rpm_repos=[]'
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
