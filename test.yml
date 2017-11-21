@@ -7,8 +7,5 @@
     - 'vars/main.yml'
     - 'vars/test.yml'
   tasks:
-    - name: set up yum.repos.d for travis...
-      file:
-        state: directory
-        path: /etc/yum.repos.d
-    - include_tasks: 'tasks/main.yml'
+    - name: Test CentOS 7, PyPI, and Docker
+      include_tasks: 'tasks/main.yml'
