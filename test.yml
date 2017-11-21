@@ -7,5 +7,7 @@
     - 'vars/main.yml'
     - 'vars/test.yml'
   tasks:
+    - name: Install python-apt
+      package: name=python-apt
     - name: Test CentOS 7, PyPI, and Docker
       include_tasks: 'tasks/main.yml'
