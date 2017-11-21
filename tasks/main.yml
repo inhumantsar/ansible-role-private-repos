@@ -14,8 +14,8 @@
 
 - name: Set up APT repos...
   apt_repository:
-    filename: "{{private_repo_name_prefix}}-{{item.name}}"
-    repo: "deb https://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/{{item.name}} {{item.codename}} {{item.component}}"
+    filename: "{{private_repo_name_prefix}}-{{item['name']}}"
+    repo: "deb https://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/{{item['name']}} {{item['codename']}} {{item['component']}}"
   with_items:
     - "{{private_repo_apt_repos}}"
   become: True
