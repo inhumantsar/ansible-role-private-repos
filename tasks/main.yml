@@ -7,7 +7,7 @@
     name: "{{private_repo_name_prefix}}-{{item}}"
     description: "{{private_repo_desc_prefix}} - {{item}}"
     baseurl: "https://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}{{item}}"
-    gpgcheck: no
+    gpgcheck: "{{ private_repo_rpm_gpgcheck }}"
   with_items:
     - "{{private_repo_rpm_repos}}"
   become: True
