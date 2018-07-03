@@ -13,6 +13,12 @@
   become: True
   when: ansible_os_family == "RedHat"
 
+- name: Install RPM signing key
+  shell: "rpm --import https://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/gpg/key/public"
+  become: True
+  when: ansible_os_family == "RedHat"
+    
+
 - name: Set up APT repos...
   apt_repository:
     filename: "{{private_repo_name_prefix}}-{{item['name']}}"
