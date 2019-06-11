@@ -4,6 +4,7 @@ private_repo_desc_prefix: 'Artifactory'  # friendly descriptions only
 private_repo_name_prefix: 'af'              # slugified prefix for repo machine names
 private_repo_url_pathprefix: 'artifactory'
 
+private_repo_verify_ssl: true
 private_repo_rpm_gpgcheck: true
 
 ## apt example
