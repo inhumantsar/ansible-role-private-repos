@@ -1,8 +1,10 @@
 [global]
+{%- if not private_repo_verify_ssl %}
 trusted-host =
 {%- for reponame in private_repo_pypi_repos %}
   {{private_repo_url_proto}}://{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/pypi/{{reponame}}/simple
 {%- endfor %}
+{%- endif %}
 extra-index-url =
 {%- for reponame in private_repo_pypi_repos %}
   {{private_repo_url_proto}}://{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/pypi/{{reponame}}/simple
