@@ -15,7 +15,9 @@
   when: ansible_os_family == "RedHat"
 
 - name: Install RPM signing key
-  shell: "rpm --import https://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/gpg/key/public"
+  rpm_key:
+    key: "https://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/gpg/key/public"
+    validate_certs: "{{ private_repo_verify_ssl }}"
   become: True
   when: ansible_os_family == "RedHat"
     
