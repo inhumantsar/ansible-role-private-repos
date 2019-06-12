@@ -14,10 +14,17 @@
   become: True
   when: ansible_os_family == "RedHat"
 
+# we're doing this because rpm_key doesn't play nice with proxy: https://github.com/ansible/ansible/issues/38050
+# and also because rpm itself doesn't play nice with self-signed SSL...
+- name: Download RPM signing key
+  get_url:
+    url: "https://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/gpg/key/public"
+    validate_certs: "{{ private_repo_verify_ssl }}"
+    dest: "/tmp/{{ private_repo_url_base }}_rpm.pub"
+
 - name: Install RPM signing key
   rpm_key:
-    key: "https://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/gpg/key/public"
-    validate_certs: "{{ private_repo_verify_ssl }}"
+    key: "/tmp/{{ private_repo_url_base }}_rpm.pub"
   become: True
   when: ansible_os_family == "RedHat"
     
