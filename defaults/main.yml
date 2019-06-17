@@ -7,6 +7,8 @@ private_repo_url_pathprefix: 'artifactory'
 private_repo_verify_ssl: true
 private_repo_rpm_gpgcheck: true
 
+private_repo_pypi_extra_index: true   # set to false to ensure the private repo is the *only* pypi repo in pip.conf
+
 ## apt example
 # private_repo_apt_repos:
 # - name: ubuntu
