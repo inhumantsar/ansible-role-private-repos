@@ -16,12 +16,17 @@
 
 # we're doing this because rpm_key doesn't play nice with proxy: https://github.com/ansible/ansible/issues/38050
 # and also because rpm itself doesn't play nice with self-signed SSL...
-- name: Download RPM signing key
-  get_url:
-    url: "https://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/gpg/key/public"
-    validate_certs: "{{ private_repo_verify_ssl }}"
-    dest: "/tmp/{{ private_repo_url_base }}_rpm.pub"
+# also also, get_url uses the same function as rpm_key underneath it all, so shell+curl it is.
+- set_fact:
+    private_repos_curl_opts: "-kL"
+  when: not private_repos_verify_ssl
 
+- name: Download RPM signing key
+  shell: "curl {{ private_repos_curl_opts }} -o $REPO_KEY_PATH $REPO_KEY_URL"
+  environment:
+    REPO_KEY_URL: "https://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/gpg/key/public"
+    REPO_KEY_PATH: "/tmp/{{ private_repo_url_base }}_rpm.pub"
+    
 - name: Install RPM signing key
   rpm_key:
     key: "/tmp/{{ private_repo_url_base }}_rpm.pub"
