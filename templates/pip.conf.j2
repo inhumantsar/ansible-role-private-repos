@@ -9,7 +9,7 @@ trusted-host =
 extra-index-url =
 {% else %}
 index-url = 
-{% endif %}
-{%- for reponame in private_repo_pypi_repos %}
+{% endif -%}
+{% for reponame in private_repo_pypi_repos %}
   {{private_repo_url_proto}}://{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/pypi/{{reponame}}/simple
 {% endfor %}
