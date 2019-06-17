@@ -19,7 +19,7 @@
 # also also, get_url uses the same function as rpm_key underneath it all, so shell+curl it is.
 - set_fact:
     private_repos_curl_opts: "-kL"
-  when: not private_repos_verify_ssl
+  when: not private_repo_verify_ssl
 
 - name: Download RPM signing key
   shell: "curl {{ private_repos_curl_opts }} -o $REPO_KEY_PATH $REPO_KEY_URL"
