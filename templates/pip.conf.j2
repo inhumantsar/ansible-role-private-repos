@@ -15,6 +15,6 @@ index-url =
   {{private_repo_url_proto}}://{{private_repo_username}}:{{private_repo_encrypted_password}}@{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/pypi/{{reponame}}/simple
 {% else %}
   {{private_repo_url_proto}}://{{private_repo_url_base}}/{{private_repo_url_pathprefix}}/api/pypi/{{reponame}}/simple
-{% fi %}
+{% endif %}
 {% endfor %}
 
