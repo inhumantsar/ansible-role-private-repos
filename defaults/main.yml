@@ -1,11 +1,13 @@
 ---
 private_repo_url_proto: 'https'
 private_repo_desc_prefix: 'Artifactory'  # friendly descriptions only
-private_repo_name_prefix: 'af'              # slugified prefix for repo machine names
+private_repo_name_prefix: 'af'        # slugified prefix for repo machine names
 private_repo_url_pathprefix: 'artifactory'
 
 private_repo_verify_ssl: true
+private_repos_curl_opts: ""          # gets overwritten automagically when verify_ssl == false
 private_repo_rpm_gpgcheck: true
+
 
 private_repo_pypi_extra_index: true   # set to false to ensure the private repo is the *only* pypi repo in pip.conf
 
